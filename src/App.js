@@ -9,6 +9,38 @@ import awsconfig from './aws-exports';
 import mic from 'microphone-stream';
 
 Amplify.configure(awsconfig);
+
+Amplify.configure({
+    // To get the AWS Credentials, you need to configure 
+    // the Auth module with your Cognito Federated Identity Pool
+    "Auth": {
+        "identityPoolId": "eu-west-2:d149dacc-1cbc-4e95-b23a-ea1b89ec1972",
+        "region": "eu-west-2"
+    },
+    "predictions": {
+          "convert": {
+            "transcription": {
+                "region": "eu-west-2",
+                "proxy": false,
+                "defaults": {
+                    "language": "en-GB"
+                }
+            },
+            "speechGenerator": {
+                "region": "eu-west-2",
+                "proxy": false,
+                "defaults": {
+                    "VoiceId": "Matthew",
+                    "LanguageCode": "en-US"
+                }
+            }
+        }
+        
+    }
+});
+
+
+
 Amplify.addPluggable(new AmazonAIPredictionsProvider());
 
 function TextIdentification() {
