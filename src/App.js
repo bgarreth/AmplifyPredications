@@ -7,8 +7,8 @@ import { AmazonAIPredictionsProvider } from '@aws-amplify/predictions';
 import awsconfig from './aws-exports';
 
 import mic from 'microphone-stream';
-
-Amplify.configure(awsconfig);
+window.LOG_LEVEL = 'DEBUG';
+//Amplify.configure(awsconfig);
 
 Amplify.configure({
     // To get the AWS Credentials, you need to configure 
